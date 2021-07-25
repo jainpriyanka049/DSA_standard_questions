@@ -1,0 +1,53 @@
+Find the Duplicate Number (Leetcode problem 287)
+
+                                          APPROACH 1
+Naive Approach: Sort the array and then check the point i-th element is same as i+1th element. 
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int ans=0;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<nums.size()-1;i++)
+        {
+            if(nums[i]==nums[i+1])
+                ans= nums[i];
+        }
+        return ans;
+    }
+};
+// Time complexity = O(NlogN)
+
+                                          APPROACH 2
+Create a frequency array, for numbers 1 to n.
+Traverse the array and keep updating the frequency. Whenever any element reaches frequency 2, return it.
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int ans=0;
+        int size = nums.size();
+        int arr[100100]={0};
+        for(int i=0;i<size;i++)
+        {
+            arr[nums[i]]++;
+            if(arr[nums[i]]==2)
+            {
+                ans = nums[i];
+            }
+        }
+        return ans;
+    }
+};
+//Time complexity = O(n)
+//Space complexity = O(n)
+
+
+                                          APPROACH 3
+Optimal approach: Linked list cycle method.
+
+
+
+
+
+
